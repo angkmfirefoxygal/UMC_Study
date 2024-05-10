@@ -7,14 +7,10 @@ android {
     namespace = "com.example.pratice"
     compileSdk = 34
 
-    viewBinding{
-        enable = true
-    }
-
     defaultConfig {
         applicationId = "com.example.pratice"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 31
         versionCode = 1
         versionName = "1.0"
 
@@ -42,6 +38,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -59,6 +56,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation("androidx.appcompat:appcompat:1.1.1")
+    implementation ("com.android.databinding:viewbinding:4.0.1")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")

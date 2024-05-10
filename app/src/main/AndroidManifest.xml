@@ -26,6 +26,6 @@
         <activity
             android:name=".SongActivity"
             android:exported="true"/>
-    </application>
+        </application>
 
 </manifest>
