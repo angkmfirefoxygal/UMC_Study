@@ -9,6 +9,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="song_player_bg">#97999B</color>
+    <color name="song_player">#0067A3</color>
+
     <color name="colorPrimary">#9cbee2</color>
     <color name="colorPrimaryDark">#062342</color>
     <color name="colorAccent">#6bb2ff</color>
