@@ -25,11 +25,6 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>):RecyclerView.Adapte
         return ViewHolder(binding)
     }
 
-    fun addItem(album: Album){
-        albumList.add(album)
-        notifyDataSetChanged()
-    }
-
 
     override fun onBindViewHolder(holder: AlbumRVAdapter.ViewHolder, position: Int) {
         holder.bind(albumList[position])
