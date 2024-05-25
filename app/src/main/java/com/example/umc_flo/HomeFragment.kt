@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.umc_flo.databinding.FragmentHomeBinding
+import com.google.gson.Gson
 
 class HomeFragment : Fragment(){
 
@@ -46,20 +47,7 @@ class HomeFragment : Fragment(){
         albumRVAdapter.setMyItemClickListener(object : AlbumRVAdapter.MyItemClickListener{
 
             override fun onItemClick(album: Album) {
-//                (context as MainActivity).supportFragmentManager.beginTransaction()
-//                    .replace(R.id.main_frm , AlbumFragment()).apply {
-//                        arguments = Bundle().apply {
-//                            val gson = Gson()
-//                            val albumJson = gson.toJson(album)
-//                            putString("album", albumJson)
-//                        }
-//                    }
-//                    .commitAllowingStateLoss()
-
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frm , AlbumFragment())
-                    .commitAllowingStateLoss()
-
+                changeAlbumFragment(album)
 
             }
 
@@ -78,6 +66,18 @@ class HomeFragment : Fragment(){
         binding.homeBannerVp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         return binding.root
+    }
+
+    private fun changeAlbumFragment(album: Album) {
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frm, AlbumFragment()).apply {
+                arguments = Bundle().apply {
+                    val gson = Gson()
+                    val albumJson = gson.toJson(album)
+                    putString("album", albumJson)
+                }
+            }
+            .commitAllowingStateLoss()
     }
 
 }
