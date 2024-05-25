@@ -10,7 +10,6 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>):RecyclerView.Adapte
     // 클릭 인터페이스 정의
     interface MyItemClickListener{
         fun onItemClick(album: Album)
-        fun onRemoveAlbum(position: Int)
     }
 
     // 리스너 객체를 전달받는 함수랑 리스너 객체를 저장할 변수
@@ -31,14 +30,11 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>):RecyclerView.Adapte
         notifyDataSetChanged()
     }
 
-    fun removeItem(position: Int){
-        albumList.removeAt(position)
-        notifyDataSetChanged()
-    }
+
     override fun onBindViewHolder(holder: AlbumRVAdapter.ViewHolder, position: Int) {
         holder.bind(albumList[position])
         holder.itemView.setOnClickListener { mItemClickListener.onItemClick(albumList[position]) }
-        holder.binding.itemAlbumTitleTv.setOnClickListener { mItemClickListener.onRemoveAlbum(position) }
+
     }
 
     override fun getItemCount(): Int = albumList.size

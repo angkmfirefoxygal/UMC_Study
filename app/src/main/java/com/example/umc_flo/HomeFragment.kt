@@ -51,9 +51,6 @@ class HomeFragment : Fragment(){
 
             }
 
-            override fun onRemoveAlbum(position: Int) {
-                albumRVAdapter.removeItem(position)
-            }
         })
 
         // 레이아웃 매니저 설정
