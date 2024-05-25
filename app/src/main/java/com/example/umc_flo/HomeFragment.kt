@@ -65,15 +65,27 @@ class HomeFragment : Fragment(){
         return binding.root
     }
 
+//    private fun changeAlbumFragment(album: Album) {
+//        (context as MainActivity).supportFragmentManager.beginTransaction()
+//            .replace(R.id.main_frm, AlbumFragment()).apply {
+//                arguments = Bundle().apply {
+//                    val gson = Gson()
+//                    val albumJson = gson.toJson(album)
+//                    putString("album", albumJson)
+//                }
+//            }
+//            .commitAllowingStateLoss()
+//    }
+
     private fun changeAlbumFragment(album: Album) {
         (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, AlbumFragment()).apply {
+            .replace(R.id.main_frm, AlbumFragment().apply {
                 arguments = Bundle().apply {
                     val gson = Gson()
                     val albumJson = gson.toJson(album)
                     putString("album", albumJson)
                 }
-            }
+            })
             .commitAllowingStateLoss()
     }
 
