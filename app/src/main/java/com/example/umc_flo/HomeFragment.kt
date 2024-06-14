@@ -22,11 +22,6 @@ class HomeFragment : Fragment(){
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-//        binding.homeAlbumImgIv1.setOnClickListener {
-//            (context as MainActivity).supportFragmentManager.beginTransaction()
-//                .replace(R.id.main_frm , AlbumFragment())
-//                .commitAllowingStateLoss()
-//        }
 
         albumDatas.apply {
             add(Album("Butter","방탄소년단(BTS)",R.drawable.img_album_exp))
@@ -51,9 +46,16 @@ class HomeFragment : Fragment(){
 
             }
 
+            override fun onRemoveAlbum(position: Int) {
+                albumRVAdapter.removeItem(position)
+            }
+
         })
 
+
         // 레이아웃 매니저 설정
+
+        binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         val bannerAdapter = BannerVPAdapter(this)
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_home_viewpager_exp))
@@ -65,17 +67,7 @@ class HomeFragment : Fragment(){
         return binding.root
     }
 
-//    private fun changeAlbumFragment(album: Album) {
-//        (context as MainActivity).supportFragmentManager.beginTransaction()
-//            .replace(R.id.main_frm, AlbumFragment()).apply {
-//                arguments = Bundle().apply {
-//                    val gson = Gson()
-//                    val albumJson = gson.toJson(album)
-//                    putString("album", albumJson)
-//                }
-//            }
-//            .commitAllowingStateLoss()
-//    }
+
 
     private fun changeAlbumFragment(album: Album) {
         (context as MainActivity).supportFragmentManager.beginTransaction()
